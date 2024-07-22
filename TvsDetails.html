@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TVZone</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="index.html">TVZone</a>
+
+      <ul>
+
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="Tvs.html">TVs </a>
+        </li>
+        <li>
+          <a href="TVBrands.html"> TV Brands</a>
+        </li>
+        <li>
+          <a href="Reports.html"> Reports</a>
+        </li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="TvsDetails"></section>
+    <h1>TV Details</h1>
+
+  </main>
+
+  <footer>
+    <p> &copy; 2023 TVZone. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Database
+    let televisions = [
+      {
+        id: "1",
+        name: "Smart LED TV",
+        model: "LED123",
+        detail: "A feature-rich Smart LED TV with high-definition display.",
+        manufacturer: "TechVision",
+        year: 2022,
+        screenType: "LED",
+        size: 55,
+        resolution: "4K",
+        price: 80000,
+      },
+      {
+        id: "2",
+        name: "Curved OLED TV",
+        model: "OLED456",
+        detail: "Immersive entertainment with a curved OLED display.",
+        manufacturer: "VisionX",
+        year: 2023,
+        screenType: "OLED",
+        size: 65,
+        resolution: "8K",
+        price: 120000,
+      },
+      {
+        id: "3",
+        name: "Ultra HD QLED TV",
+        model: "QLED789",
+        detail: "QLED technology for vibrant colors and superior clarity.",
+        manufacturer: "ColorTech",
+        year: 2021,
+        screenType: "QLED",
+        size: 75,
+        resolution: "4K",
+        price: 150000,
+      },
+    ];
+
+    function getParameterById(name) {
+      let url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    let Tvid = getParameterById("id");
+
+    let Tv;
+    for (let i = 0; i < televisions.length; i++) {
+      if (televisions[i].id === Tvid) {
+        Tv = televisions[i];
+      }
+    }
+
+    let tvdetails = document.getElementById("TvsDetails");
+    tvdetails.innerHTML = `
+      <h2>${Tv.name}</h2>
+      <ul>
+        <li>
+          Model: ${Tv.model}
+        </li>
+        <li>
+          Detail: ${Tv.detail}
+        </li>
+        <li>
+          Manufacturer: ${Tv.manufacturer}
+        </li>
+        <li>
+          Screen Type: ${Tv.screenType}
+        </li>
+        <li>
+          Resolution: ${Tv.resolution}
+        </li>
+        <li>
+          Year: ${Tv.year}
+        </li>
+        <li>
+          Price: ${Tv.price}
+        </li>
+      </ul>
+    `;
+  </script>
+
+</body>
+
+</html>
